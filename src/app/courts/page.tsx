@@ -4,7 +4,7 @@ const CourtsPage = async () => {
 	await bringCourts()
 	return (
 		<div>
-			<h1>Courts</h1>
+			<h1>Courtss</h1>
 		</div>
 	);
 };
