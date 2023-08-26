@@ -34,6 +34,8 @@ const ReservationsPage = () => {
 		"22:30",
 	];
 
+    //TODO: Traer la hora seleccionada para la reserva
+	//TODO: Crear contexto para manejar la reserva
 	return (
 		<div>
 			<h2>Reservations</h2>

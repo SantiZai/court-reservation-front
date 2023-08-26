@@ -14,6 +14,7 @@ const Timeline = ({ hours }: { hours: string[] }) => {
 
 	const pages = paginationHours(hours, 5);
 
+    //TODO: Hacer algo con selectedHour
 	return (
 		<div className="p-2 bg-red-300 mx-auto">
 			<div className="flex gap-2 justify-center">
