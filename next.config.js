@@ -1,11 +1,11 @@
-import path from "path"
+
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
-    sassOptions: {
-        includePaths: [path.join(__dirname, "styles")]
-    }
-}
+	sassOptions: {
+		includePaths: [path.join(__dirname, "styles")],
+	},
+};
 
-export default nextConfig
+module.exports = nextConfig;
