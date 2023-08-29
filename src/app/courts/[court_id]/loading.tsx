@@ -1,4 +1,4 @@
-import LoadingCourts from "@/components/LoadingCourts";
+import LoadingCourts from "@/components/LoadingComponent";
 
 const LoadingCourtPage = () => {
 	return (
