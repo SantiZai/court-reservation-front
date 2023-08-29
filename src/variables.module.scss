@@ -1,5 +1,19 @@
-$primary-color: #64ff00;
+$bg-light: #F9F5EB;
+$bg-dark: #000113;
+$primary-color: #060930;
+$secondary-color: #787A91;
+$text-light: #787A91;
+$text-dark: #060930;
+$third-color: #102C57;
+$four-color: #EAE3D2;
 
 :export {
+    bgLigh: $bg-light;
+    bgDark: $bg-dark;
     primaryColor: $primary-color;
+    secondaryColor: $secondary-color;
+    textLight: $text-light;
+    textDark: $text-dark;
+    thirdColor: $third-color;
+    fourColor: $four-color;
 }

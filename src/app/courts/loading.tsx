@@ -1,7 +1,11 @@
-import LoadingCourts from "@/components/LoadingCourts";
+import LoadingCourts from "@/components/LoadingComponent";
 
 const LoadingCourtsPage = () => {
-	return <div><LoadingCourts /></div>;
+	return (
+		<div>
+			<LoadingCourts />
+		</div>
+	);
 };
 
 export default LoadingCourtsPage;
