@@ -1,6 +1,11 @@
+"use client"
+
 import Timeline from "@/components/Timeline";
+import { useState } from "react";
 
 const ReservationsPage = () => {
+	const [selectedHour, setSelectedHour] = useState<string>("");
+
     const hours = [
 		"08:00",
 		"08:30",
@@ -34,13 +39,15 @@ const ReservationsPage = () => {
 		"22:30",
 	];
 
+	const handleSelectedHour = (hour: string) => setSelectedHour(hour)
+
     //TODO: Traer la hora seleccionada para la reserva
 	//TODO: Crear contexto para manejar la reserva
 	return (
 		<div>
 			<h2>Reservations</h2>
 			<div>
-				<Timeline hours={hours} />
+				<Timeline hours={hours} handle={handleSelectedHour} />
 			</div>
 		</div>
 	);

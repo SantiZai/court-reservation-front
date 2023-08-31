@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./globals.css";
+import "./navigation.scss"
 
 export const metadata = {
 	title: "Court reservation",
@@ -13,7 +14,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<ul>
+				<ul className="navigation w-full flex gap-2">
 					<li>
 						<Link href="/">Home</Link>
 					</li>
