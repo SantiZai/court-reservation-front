@@ -15,5 +15,5 @@ export interface Court {
 }
 
 export interface Reservation {
-
+	
 }

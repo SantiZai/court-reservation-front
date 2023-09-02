@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const API = process.env.API_BASE;
-const API = "http://localhost:3000/"
+const API = "http://localhost:3000/";
 
 export const bringCourts = async () => {
 	try {
@@ -15,9 +15,9 @@ export const bringCourts = async () => {
 
 export const bringCourt = async (id: string) => {
 	try {
-		const res = await axios.get(`${API}courts/${id}`)
-		return res.data
+		const res = await axios.get(`${API}courts/${id}`);
+		return res.data;
 	} catch (err) {
-		return err
+		return err;
 	}
-}
+};
