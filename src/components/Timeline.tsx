@@ -3,17 +3,18 @@
 import { paginationHours } from "@/utils/paginations";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
+import Link from "next/link";
+import { Court } from "@/utils/models";
 
 const Timeline = ({
-	hours,
-	handle,
+	courts,
 	reservations,
 }: {
-	hours: string[];
-	handle: (hour: string) => void;
-	reservations: {};
+	courts: Court[];
+	reservations: any;
 }) => {
 	const [actualPage, setActualPage] = useState(0);
+	const [selectedHour, setSelectedHour] = useState<string>("");
 
 	const allHours = [
 		"08:00",
@@ -56,35 +57,51 @@ const Timeline = ({
 
 	return (
 		<div className="p-2 mx-auto">
-			<div className="flex gap-2 justify-center">
-				<button
-					disabled={actualPage === 0}
-					onClick={() => handlePage(actualPage - 1)}
-				>
-					<ArrowBackIos />
-				</button>
-				{pages[actualPage].map((hour, i) => (
-					<div key={i}>
-						{
-							//TODO: Objeto con los courts y sus reservas como prop
-							//TODO: Hallar la forma de por cada court del objeto reservations ver si el horario en allHours está reservado para no mostrar el court a la hora de mostrar la timeline
-							//TODO: Si todos los courts están reservados a una hora, esta debe mostrarse no disponible, de lo contrario los courts podrán reservarse
-						}
-						{/* {!hours.includes(hour) ? (
-							<button className="text-gray-300">{hour}</button>
-						) : (
-							<button key={i} onClick={() => handle(hour)}>
-								{hour}
-							</button>
-						)} */}
-					</div>
-				))}
-				<button
-					disabled={actualPage === pages.length - 1}
-					onClick={() => handlePage(actualPage + 1)}
-				>
-					<ArrowForwardIos />
-				</button>
+			<div>
+				<div className="flex gap-2 justify-center">
+					<button
+						disabled={actualPage === 0}
+						onClick={() => handlePage(actualPage - 1)}
+					>
+						<ArrowBackIos />
+					</button>
+					{pages[actualPage].map((hour, i) => {
+						const availableCourts = Object.keys(reservations).filter(
+							(court) => !reservations[court].includes(hour),
+						);
+						return (
+							<div key={i}>
+								{availableCourts.length === 0 ? (
+									<button className="text-gray-300">{hour}</button>
+								) : (
+									<button key={i} onClick={() => setSelectedHour(hour)}>
+										{hour}
+									</button>
+								)}
+							</div>
+						);
+					})}
+					<button
+						disabled={actualPage === pages.length - 1}
+						onClick={() => handlePage(actualPage + 1)}
+					>
+						<ArrowForwardIos />
+					</button>
+				</div>
+				{Object.keys(reservations).map((court, i) => {
+					const actualCourt: Court = courts[i];
+					if (!reservations[court].includes(selectedHour)) {
+						return (
+							<Link
+								key={i}
+								href={`/reservations/new-reservation?court_id=${actualCourt.id}&hour=${selectedHour}`}
+							>
+								<div>{court} disponible</div>
+							</Link>
+						);
+					}
+					return null;
+				})}
 			</div>
 		</div>
 	);
