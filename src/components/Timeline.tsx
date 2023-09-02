@@ -7,9 +7,11 @@ import { useState } from "react";
 const Timeline = ({
 	hours,
 	handle,
+	reservations,
 }: {
 	hours: string[];
 	handle: (hour: string) => void;
+	reservations: {};
 }) => {
 	const [actualPage, setActualPage] = useState(0);
 
@@ -63,13 +65,18 @@ const Timeline = ({
 				</button>
 				{pages[actualPage].map((hour, i) => (
 					<div key={i}>
-						{!hours.includes(hour) ? (
+						{
+							//TODO: Objeto con los courts y sus reservas como prop
+							//TODO: Hallar la forma de por cada court del objeto reservations ver si el horario en allHours está reservado para no mostrar el court a la hora de mostrar la timeline
+							//TODO: Si todos los courts están reservados a una hora, esta debe mostrarse no disponible, de lo contrario los courts podrán reservarse
+						}
+						{/* {!hours.includes(hour) ? (
 							<button className="text-gray-300">{hour}</button>
 						) : (
 							<button key={i} onClick={() => handle(hour)}>
 								{hour}
 							</button>
-						)}
+						)} */}
 					</div>
 				))}
 				<button
