@@ -1,12 +1,25 @@
-"use client"
+"use client";
 
 import Timeline from "@/components/Timeline";
-import { useState } from "react";
+import { bringCourts } from "@/services/bringData";
+import { checkReservations } from "@/services/checking";
+import { Court } from "@/utils/models";
+import { useEffect, useState } from "react";
 
 const ReservationsPage = () => {
+	const [courts, setCourts] = useState<Court[]>([]);
+	const [reservations, setReservations] = useState<{}>({});
 	const [selectedHour, setSelectedHour] = useState<string>("");
 
-    const hours = [
+	useEffect(() => {
+		bringCourts().then((res) => setCourts(res));
+	}, []);
+
+	useEffect(() => {
+		setReservations(checkReservations(courts));
+	}, [courts]);
+
+	const hours = [
 		"08:00",
 		"08:30",
 		"09:00",
@@ -39,15 +52,15 @@ const ReservationsPage = () => {
 		"22:30",
 	];
 
-	const handleSelectedHour = (hour: string) => setSelectedHour(hour)
+	const handleSelectedHour = (hour: string) => setSelectedHour(hour);
 
-    //TODO: Traer la hora seleccionada para la reserva
+	//TODO: Traer la hora seleccionada para la reserva
 	//TODO: Crear contexto para manejar la reserva
 	return (
 		<div>
 			<h2>Reservations</h2>
 			<div>
-				<Timeline hours={hours} handle={handleSelectedHour} />
+				<Timeline hours={hours} handle={handleSelectedHour} reservations={reservations} />
 			</div>
 		</div>
 	);
