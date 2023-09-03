@@ -5,6 +5,7 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
 import Link from "next/link";
 import { Court } from "@/utils/models";
+import { between, calculatePostLimit, calculatePriorLimit } from "@/services/checking";
 
 const Timeline = ({
 	courts,
@@ -55,61 +56,7 @@ const Timeline = ({
 
 	const pages = paginationHours(allHours, 5);
 
-	function calculatePriorLimit(hour: string, hoursBefore: number): string {
-		// Dividir hora
-		const [h, m] = hour.split(":");
-
-		// Convertir a números
-		let newH = parseInt(h);
-		let newM = parseInt(m);
-
-		// Restar horas
-		newH -= Math.floor(hoursBefore);
-
-		// Restar minutos
-		newM -= Math.round((hoursBefore % 1) * 60);
-
-		// Corregir minutos negativos
-		if (newM < 0) {
-			newM += 60;
-			newH--;
-		}
-
-		// Formatear con 02 dígitos
-		const newHStr = newH.toString().padStart(2, "0");
-		const newMStr = newM.toString().padStart(2, "0");
-
-		return `${newHStr}:${newMStr}`;
-	}
-
-	function calculatePostLimit(hour: string, hoursAfter: number): string {
-		const [h, m] = hour.split(":");
-
-		let newH = parseInt(h);
-		let newM = parseInt(m);
-
-		newH += Math.floor(hoursAfter);
-		newM += Math.round((hoursAfter % 1) * 60);
-
-		if (newM >= 60) {
-			newM -= 60;
-			newH++;
-		}
-
-		const newHStr = newH.toString().padStart(2, "0");
-		const newMStr = newM.toString().padStart(2, "0");
-
-		return `${newHStr}:${newMStr}`;
-	}
-
-	function between(arr: string[], start: string, end: string) {
-		return arr.filter((hour) => {
-			return hour >= start && hour <= end;
-		});
-	}
-
-	//TODO: Bloquear turnos anteriores de turnos ya sacados para que no se superpongan
-	//TODO: Permitir turnos de hora y media
+	//TODO: Permitir turnos de hora y de hora y media
 	return (
 		<div className="p-2 mx-auto">
 			<div>
@@ -145,7 +92,6 @@ const Timeline = ({
 				</div>
 				{Object.keys(reservations).map((court, i) => {
 					const actualCourt: Court = courts[i];
-					//TODO: Obtener horas bloqueadas
 					const blockedHours = reservations[court]
 						.map((hour: any) => {
 							const limit1 = calculatePriorLimit(hour, 1);
@@ -157,7 +103,7 @@ const Timeline = ({
 						return (
 							<Link
 								key={i}
-								href={`/reservations/new-reservation?courst_id=${actualCourt.id}&hour=${selectedHour}`}
+								href={`/reservations/new-reservation?court_id=${actualCourt.id}&hour=${selectedHour}`}
 							>
 								<div>{actualCourt.name} disponible</div>
 							</Link>
