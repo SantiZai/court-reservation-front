@@ -56,7 +56,6 @@ const Timeline = ({
 
 	const pages = paginationHours(allHours, 5);
 
-	//TODO: Permitir turnos de hora y de hora y media
 	return (
 		<div className="p-2 mx-auto">
 			<div>

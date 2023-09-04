@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //const API = process.env.API_BASE;
-const API = "http://localhost:3000/";
+export const API = "http://localhost:3000/";
 
 export const bringCourts = async () => {
 	try {
