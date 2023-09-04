@@ -1,6 +1,8 @@
 import Link from "next/link";
 import "./globals.css";
-import "./navigation.scss"
+import "./navigation.scss";
+import { cookies } from "next/headers";
+import ClientCookiesProvider from "@/components/providers/CookiesProvider";
 
 export const metadata = {
 	title: "Court reservation",
@@ -28,7 +30,9 @@ export default function RootLayout({
 						<Link href="/auth">Auth</Link>
 					</li>
 				</ul>
-				{children}
+				<ClientCookiesProvider value={cookies().getAll()}>
+					{children}
+				</ClientCookiesProvider>
 			</body>
 		</html>
 	);
