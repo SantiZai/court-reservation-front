@@ -5,7 +5,11 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { useState } from "react";
 import Link from "next/link";
 import { Court } from "@/utils/models";
-import { between, calculatePostLimit, calculatePriorLimit } from "@/services/checking";
+import {
+	between,
+	calculatePostLimit,
+	calculatePriorLimit,
+} from "@/services/checking";
 
 const Timeline = ({
 	courts,
@@ -92,21 +96,52 @@ const Timeline = ({
 				{Object.keys(reservations).map((court, i) => {
 					const actualCourt: Court = courts[i];
 					const blockedHours = reservations[court]
-						.map((hour: any) => {
-							const limit1 = calculatePriorLimit(hour, 1);
-							const limit2 = calculatePostLimit(hour, 1);
+						.map((hour: string) => {
+							const limit1 = calculatePriorLimit(hour, 0.5);
+							const limit2 = calculatePostLimit(hour, 0.5);
 							return between(allHours, limit1, limit2);
 						})
 						.flat();
 					if (!blockedHours.includes(selectedHour)) {
-						return (
-							<Link
-								key={i}
-								href={`/reservations/new-reservation?court_id=${actualCourt.id}&hour=${selectedHour}`}
-							>
-								<div>{actualCourt.name} disponible</div>
-							</Link>
-						);
+						const largeTurn = reservations[court]
+							.map((hour: string) => {
+								const limit1 = calculatePriorLimit(hour, 1);
+								const limit2 = calculatePostLimit(hour, 1);
+								return between(allHours, limit1, limit2);
+							})
+							.flat();
+						if (!largeTurn.includes(selectedHour)) {
+							return (
+								<div key={i}>
+									<Link
+										href={`/reservations/new-reservation?court_id=${
+											actualCourt.id
+										}&hour=${selectedHour}&duration=${60}`}
+									>
+										<div>{actualCourt.name} disponible - 60 minutos</div>
+									</Link>
+									<Link
+										href={`/reservations/new-reservation?court_id=${
+											actualCourt.id
+										}&hour=${selectedHour}&duration=${90}`}
+									>
+										<div>{actualCourt.name} disponible - 90 minutos</div>
+									</Link>
+								</div>
+							);
+						} else {
+							return (
+								<div key={i}>
+									<Link
+										href={`/reservations/new-reservation?court_id=${
+											actualCourt.id
+										}&hour=${selectedHour}&duration=${60}`}
+									>
+										<div>{actualCourt.name} disponible - 60 minutos</div>
+									</Link>
+								</div>
+							);
+						}
 					}
 					return null;
 				})}
