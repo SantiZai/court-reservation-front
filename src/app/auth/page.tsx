@@ -1,5 +1,6 @@
 "use client";
 
+//TODO: No estoy usando esto, ver si funciona igual el auth
 import { googleAuth } from "@/services/auth";
 
 const AuthPage = () => {

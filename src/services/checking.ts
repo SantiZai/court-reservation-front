@@ -1,6 +1,5 @@
 import { Court } from "@/utils/models";
 
-//TODO: Complete this function for check if the court have disponibility
 export const checkReservations = (courts: Court[]) => {
 	let reservations: any = {};
 	courts.forEach((court: Court) => {

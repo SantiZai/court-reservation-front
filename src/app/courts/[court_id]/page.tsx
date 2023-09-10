@@ -12,7 +12,6 @@ const CourtPage = ({ params }: { params: { court_id: string } }) => {
 		bringCourt(params.court_id).then((res) => setCourt(res));
 	}, [])
 
-	//TODO: Realizar los cambios aca
 	return (
 		<div>
 			<SingleCourt court={court} />
