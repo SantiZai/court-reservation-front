@@ -39,8 +39,9 @@ const GoogleCallbackPage = () => {
 					.then((res) => {
 						const accessToken = res.data.access_token;
 						cookies.set("access_token", res.data.access_token);
-						//TODO: Setear el access_token del estado global
 						setToken(accessToken);
+						//TODO: Setear el access_token del estado global
+						setTokenState(accessToken);
 					})
 					.catch((err) => console.error(err));
 			}
