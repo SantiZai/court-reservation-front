@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useCookies } from "next-client-cookies";
 import axios from "axios";
+import { userStore } from "@/utils/globalStates";
 
 const GoogleCallbackPage = () => {
 	const cookies = useCookies();
@@ -15,10 +16,16 @@ const GoogleCallbackPage = () => {
 
 	const searchParams = useSearchParams();
 
+	//Setea valores en el estado global
+	const setTokenState = userStore((state: any) => state.setToken);
+	const setUserState = userStore((state: any) => state.setUser);
+	const user = userStore((state: any) => state.user);
+
 	useEffect(() => {
 		if (!cookies.get("access_token")) {
 			const code = searchParams.get("code");
 			if (code) {
+				//TODO: Crear variables de entorno para datos sensibles
 				const requestBody = {
 					code: code,
 					client_id:
@@ -32,6 +39,7 @@ const GoogleCallbackPage = () => {
 					.then((res) => {
 						const accessToken = res.data.access_token;
 						cookies.set("access_token", res.data.access_token);
+						//TODO: Setear el access_token del estado global
 						setToken(accessToken);
 					})
 					.catch((err) => console.error(err));
@@ -52,10 +60,20 @@ const GoogleCallbackPage = () => {
 				)
 				.then((res) => {
 					setUserData(res.data);
+					setUserState({
+						email: res.data.emailAddresses[0].value,
+						name: res.data.names[0].displayName,
+						photo: res.data.photos[0].url,
+					});
 				})
 				.catch((err) => console.error(err));
 		}
 	}, [token]);
+
+	useEffect(() => {
+		console.log(userData);
+		console.log(user);
+	}, [userData]);
 
 	return (
 		<div>
