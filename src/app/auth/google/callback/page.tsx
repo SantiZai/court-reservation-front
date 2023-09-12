@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useCookies } from "next-client-cookies";
 import axios from "axios";
 import { userStore } from "@/utils/globalStates";
+import { bringUserByEmail } from "@/services/bringData";
 
 const GoogleCallbackPage = () => {
 	const cookies = useCookies();
@@ -66,20 +67,25 @@ const GoogleCallbackPage = () => {
 						name: res.data.names[0].displayName,
 						photo: res.data.photos[0].url,
 					});
+					console.log(res.data);
 				})
 				.catch((err) => console.error(err));
 		}
 	}, [token]);
 
 	useEffect(() => {
-		console.log(userData);
-		console.log(user);
+		bringUserByEmail(user.email).then((res) =>
+			setUserState({
+				id: res.id,
+				...user,
+			}),
+		);
 	}, [userData]);
 
 	return (
 		<div>
 			<h2>Inicio de sesión exitoso...</h2>
-			<button onClick={() => console.log(token, userData)}>Show data</button>
+			<button onClick={() => console.log(token, userData, user)}>Show data</button>
 		</div>
 	);
 };
