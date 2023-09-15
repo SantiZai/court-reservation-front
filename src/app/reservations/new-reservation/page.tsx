@@ -19,7 +19,6 @@ const NewReservationPage = () => {
 	const newReservation = () => {
 		const actualDate = new Date();
 		try {
-			//TODO: no me permite crear reservas
 			createReservation({
 				duration: duration,
 				reservedMonth: (actualDate.getMonth() + 1).toString().padStart(2, "0"), 
