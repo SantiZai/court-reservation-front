@@ -1,7 +1,5 @@
 "use client";
 
-//TODO: No estoy usando esto, ver si funciona igual el auth
-import { googleAuth } from "@/services/auth";
 import { useCookies } from "next-client-cookies";
 
 const AuthPage = () => {
