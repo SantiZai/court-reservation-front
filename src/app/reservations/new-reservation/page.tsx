@@ -47,6 +47,7 @@ const NewReservationPage = () => {
 			<h3>{hour}</h3>
 			<h3>{duration}</h3>
 			<button onClick={newReservation}>Crear reserva</button>
+			<button onClick={() => console.log(duration)}>Get duration</button>
 		</div>
 	);
 };
