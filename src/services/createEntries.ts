@@ -4,9 +4,10 @@ import { API } from "./bringData";
 
 export const createReservation = async (reservation: Reservation) => {
 	try {
-		const res = await axios.post(`${API}reservations`, { reservation });
+		console.log(reservation);
+		const res = await axios.post(`${API}reservations`, reservation);
         console.log(res.status);
 	} catch (err) {
-		return err;
+		console.error(err);
 	}
 };
