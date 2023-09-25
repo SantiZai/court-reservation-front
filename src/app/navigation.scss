@@ -1,3 +1,11 @@
-.navigation {
-    position: sticky;
+.menu {
+    position: absolute;
+    top: 0;
+    left: -70%;
+    transition: .3s ease;
+}
+
+.opened {
+    left: 0;
+    transition: .3s ease;
 }
