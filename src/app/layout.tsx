@@ -3,6 +3,7 @@ import "./navigation.scss";
 import { cookies } from "next/headers";
 import ClientCookiesProvider from "@/components/providers/CookiesProvider";
 import DropdownMenu from "@/components/pures/DropdownMenu";
+import Footer from "@/components/pures/Footer";
 
 export const metadata = {
 	title: "Court reservation",
@@ -20,6 +21,7 @@ export default function RootLayout({
 				<ClientCookiesProvider value={cookies().getAll()}>
 					{children}
 				</ClientCookiesProvider>
+				<Footer />
 			</body>
 		</html>
 	);
