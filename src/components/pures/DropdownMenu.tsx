@@ -12,7 +12,7 @@ const DropdownMenu = () => {
 			<div className="toggle w-full flex justify-end">
 				<div onClick={() => setOpen(!open)}>{open ? <Close /> : <Menu />}</div>
 			</div>
-			<div className={`menu ${open && "opened"}`}>
+			<div className={`menu ${open && "opened"} w-full bg-red-200`}>
 				<ul className="navigation flex gap-2">
 					<li>
 						<Link href="/">Home</Link>

@@ -1,7 +1,13 @@
+.toggle {
+    position: absolute;
+    z-index: 2;
+}
+
 .menu {
     position: absolute;
+    z-index: 1;
     top: 0;
-    left: -70%;
+    left: -100%;
     transition: .3s ease;
 }
 
