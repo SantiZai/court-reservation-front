@@ -1,0 +1,24 @@
+@import "../mixins";
+@import "../variables";
+
+.container-all {
+    background-color: $bg-light;
+}
+
+.container-search {
+	border: 1px solid gray;
+	input {
+		width: 100%;
+		margin: 2px 0px;
+        background-color: $bg-light;
+        outline: none
+	}
+}
+
+.btn-primary {
+	@include btn(true);
+}
+
+.btn-secondary {
+	@include btn;
+}

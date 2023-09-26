@@ -1,0 +1,12 @@
+@import "variables";
+
+@mixin btn($primary: false) {
+	@if $primary {
+		background-color: $primary-color;
+		color: $text-light;
+	} @else {
+		background-color: $secondary-color;
+		color: $text-dark;
+        border: 1px solid $text-dark;
+	}
+}
