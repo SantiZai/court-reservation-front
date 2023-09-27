@@ -21,7 +21,7 @@ const HomePage = () => {
 					<input type="text" placeholder="Día" />
 					<input type="text" placeholder="Horario" />
 				</div>
-				<button className="btn-primary rounded-2xl">Buscar cancha</button>
+				<button className="btn-primary rounded-2xl py-1">Buscar cancha</button>
 			</div>
 
 			<div className="test-service">
