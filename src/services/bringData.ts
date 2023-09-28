@@ -13,9 +13,9 @@ export const bringUserByEmail = async (email: string) => {
 	}
 };
 
-export const bringCourts = async (id: string) => {
+export const bringCourts = async (clubName: string) => {
 	try {
-		const res = await axios.get(`${API}clubs/${id}/courts`);
+		const res = await axios.get(`${API}courts?club=${clubName}`);
 		return res.data;
 	} catch (err) {
 		return err;

@@ -8,21 +8,19 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const ReservationsPage = () => {
-	const [courts, setCourts] = useState<Court[]>([]);
-	const [reservations, setReservations] = useState<{}>({});
+	const [courts, setCourts] = useState([] as Court[]);
+	const [reservations, setReservations] = useState({} as {});
 
 	const params = useSearchParams();
 
 	useEffect(() => {
-		if (params.get("clubId")) {
-			bringCourts(params.get("clubId") as string).then((res) =>
-				setCourts(res.courts),
-			);
+		if (params.get("club")) {
+			bringCourts(params.get("club") as string).then((res) => setCourts(res));
 		}
 	}, []);
 
 	useEffect(() => {
-		if (courts.length > 0) {
+		if (courts && courts.length > 0) {
 			setReservations(checkReservations(courts));
 		}
 	}, [courts]);
