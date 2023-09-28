@@ -1,4 +1,4 @@
-const Loading = ({ quantity }: { quantity?: number }) => {
+const Loading = () => {
 	return (
 		<div>
 			<h2>Loading...</h2>

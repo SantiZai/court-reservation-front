@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Court } from "@/utils/models";
+import { Club, Court } from "@/utils/models";
 import { bringCourt } from "@/services/bringData";
 import { createReservation } from "@/services/createEntries";
 import { userStore } from "@/utils/globalStates";
 
 const NewReservationPage = () => {
+	const [clubId, setClubId] = useState("");
 	const [court, setCourt] = useState<Court>({} as Court);
 	const [hour, setHour] = useState<string>("");
 	const [duration, setDuration] = useState<number>(0);
@@ -21,11 +22,12 @@ const NewReservationPage = () => {
 		try {
 			createReservation({
 				duration: duration,
-				reservedMonth: (actualDate.getMonth() + 1).toString().padStart(2, "0"), 
+				reservedMonth: (actualDate.getMonth() + 1).toString().padStart(2, "0"),
 				reservedDay: actualDate.getDate().toString().padStart(2, "0"),
 				reservedHour: hour.split(":")[0],
 				reservedMinutes: hour.split(":")[1],
 				userId: user.id,
+				clubId: parseInt(clubId),
 				courtId: court.id,
 			});
 		} catch (err) {
@@ -35,7 +37,8 @@ const NewReservationPage = () => {
 
 	//court_id=3&hour=14:00&duration=60
 	useEffect(() => {
-		bringCourt(params.get("court_id")!).then((res) => setCourt(res));
+		bringCourt(params.get("courtId")!).then((res) => setCourt(res));
+		setClubId(params.get("clubId")!);
 		setHour(params.get("hour")!);
 		setDuration(parseInt(params.get("duration")!));
 	}, []);

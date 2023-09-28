@@ -1,6 +1,23 @@
+"use client";
+
+import Link from "next/link";
 import "./home.scss";
+import { useState } from "react";
 
 const HomePage = () => {
+	const [data, setData] = useState(
+		{} as { country: string; province: string; city: string; sport: string },
+	);
+
+	const handleChange =
+		(field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+			setData({
+				...data,
+				[field]: e.target.value,
+			});
+			console.log(data);
+		};
+
 	return (
 		<div className="container-all p-2">
 			<div>
@@ -15,13 +32,34 @@ const HomePage = () => {
 			</div>
 
 			<div className="container-search flex flex-col p-2 rounded-2xl">
-				<input type="text" placeholder="Buscar ciudad" />
-				<input type="text" placeholder="Deporte" />
+				<div>
+					<input
+						type="text"
+						placeholder="País"
+						onChange={handleChange("country")}
+					/>
+					<input
+						type="text"
+						placeholder="Provincia/Estado"
+						onChange={handleChange("province")}
+					/>
+					<input
+						type="text"
+						placeholder="Ciudad"
+						onChange={handleChange("city")}
+					/>
+				</div>
+				<input type="text" placeholder="Deporte" onChange={handleChange("sport")} />
 				<div className="flex gap-2">
 					<input type="text" placeholder="Día" />
 					<input type="text" placeholder="Horario" />
 				</div>
-				<button className="btn-primary rounded-2xl py-1">Buscar cancha</button>
+				<Link
+					href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
+					className="btn-primary text-center rounded-2xl py-1"
+				>
+					Buscar cancha
+				</Link>
 			</div>
 
 			<div className="test-service">
@@ -43,8 +81,12 @@ const HomePage = () => {
 					</span>
 				</div>
 				<div className="flex w-full justify-between">
-					<button className="btn-primary rounded-md px-3 py-1 text-sm">FUNCIONALIDADES</button>
-					<button className="btn-secondary rounded-md px-3 py-1 text-sm">PLANES Y PRECIOS</button>
+					<button className="btn-primary rounded-md px-3 py-1 text-sm">
+						FUNCIONALIDADES
+					</button>
+					<button className="btn-secondary rounded-md px-3 py-1 text-sm">
+						PLANES Y PRECIOS
+					</button>
 				</div>
 			</div>
 
