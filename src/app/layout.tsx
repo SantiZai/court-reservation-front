@@ -1,4 +1,5 @@
 import "./globals.css";
+import "./layout.scss"
 import "./navigation.scss";
 import { cookies } from "next/headers";
 import ClientCookiesProvider from "@/components/providers/CookiesProvider";

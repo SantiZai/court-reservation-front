@@ -9,7 +9,7 @@ const DropdownMenu = () => {
 
 	return (
 		<>
-			<div className="toggle w-full flex justify-end">
+			<div className="toggle">
 				<div onClick={() => setOpen(!open)}>{open ? <Close /> : <Menu />}</div>
 			</div>
 			<div className={`menu ${open && "opened"} w-full bg-red-200`}>

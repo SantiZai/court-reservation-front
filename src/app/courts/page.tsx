@@ -5,7 +5,6 @@ import { bringCourts } from "@/services/bringData";
 import { Court } from "@/utils/models";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import variables from "../../variables.module.scss";
 
 const CourtsPage = () => {
 	const [courts, setCourts] = useState<Court[]>([]);
@@ -15,7 +14,7 @@ const CourtsPage = () => {
 	}, []);
 
 	return (
-		<div style={{backgroundColor: variables.primaryColor}}>
+		<div>
 			<h1>Courts</h1>
 			<div className="flex flex-col gap-4">
 				{courts.map((court: Court) => {
