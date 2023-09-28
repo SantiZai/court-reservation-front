@@ -114,14 +114,14 @@ const Timeline = ({
 							return (
 								<div key={i}>
 									<Link
-										href={`/reservations/new-reservation?court_id=${
+										href={`/reservations/new-reservation?courtId=${
 											actualCourt.id
 										}&hour=${selectedHour}&duration=${60}`}
 									>
 										<div>{actualCourt.name} disponible - 60 minutos</div>
 									</Link>
 									<Link
-										href={`/reservations/new-reservation?court_id=${
+										href={`/reservations/new-reservation?courtId=${
 											actualCourt.id
 										}&hour=${selectedHour}&duration=${90}`}
 									>
@@ -133,7 +133,7 @@ const Timeline = ({
 							return (
 								<div key={i}>
 									<Link
-										href={`/reservations/new-reservation?court_id=${
+										href={`/reservations/new-reservation?courtId=${
 											actualCourt.id
 										}&hour=${selectedHour}&duration=${60}`}
 									>

@@ -58,7 +58,7 @@ export interface Reservation {
 	reservedMinutes: string;
 	user?: Player;
 	userId: number;
-	club: Club;
+	club?: Club;
 	clubId: number;
 	court?: Court;
 	courtId: number;
