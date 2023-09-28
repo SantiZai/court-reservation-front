@@ -2,6 +2,7 @@
 
 import { findCourts } from "@/services/searchCourts";
 import { Club, Sport } from "@/utils/models";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -37,12 +38,14 @@ const SearchPage = () => {
 					{clubs.map((club: Club) => {
 						return (
 							<div key={club.id}>
-								<span>{club.name}</span>
-								<div className="flex">
-									{club.sports.map((sport: Sport) => {
-										return <span>{sport}</span>;
-									})}
-								</div>
+								<Link href={`reservations?club=${club.name}`}>
+									<span>{club.name}</span>
+									<div className="flex">
+										{club.sports.map((sport: Sport) => {
+											return <span>{sport}</span>;
+										})}
+									</div>
+								</Link>
 							</div>
 						);
 					})}

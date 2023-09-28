@@ -21,9 +21,6 @@ const DropdownMenu = () => {
 						<Link href="/courts">Courts</Link>
 					</li>
 					<li>
-						<Link href="/reservations">Reservations</Link>
-					</li>
-					<li>
 						<Link href="/auth">Auth</Link>
 					</li>
 				</ul>
