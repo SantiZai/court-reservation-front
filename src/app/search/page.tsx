@@ -41,8 +41,8 @@ const SearchPage = () => {
 								<Link href={`reservations?club=${club.name}`}>
 									<span>{club.name}</span>
 									<div className="flex">
-										{club.sports.map((sport: Sport) => {
-											return <span>{sport}</span>;
+										{club.sports.map((sport: Sport, i: number) => {
+											return <span key={i}>{sport}</span>;
 										})}
 									</div>
 								</Link>
