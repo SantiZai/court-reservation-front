@@ -41,6 +41,7 @@ const NewReservationPage = () => {
 		setClubId(params.get("clubId")!);
 		setHour(params.get("hour")!);
 		setDuration(parseInt(params.get("duration")!));
+		console.log(user)
 	}, []);
 
 	return (
