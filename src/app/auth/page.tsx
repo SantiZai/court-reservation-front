@@ -1,6 +1,7 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
+
 import { useCookies } from "next-client-cookies";
 
 const AuthPage = () => {
