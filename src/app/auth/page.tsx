@@ -1,14 +1,18 @@
 "use client";
 
+import { createUser } from "@/services/createEntries";
+import { Player } from "@/utils/models";
 import { signIn, signOut, useSession } from "next-auth/react";
-
-import { useCookies } from "next-client-cookies";
+import { useEffect } from "react";
 
 const AuthPage = () => {
-	const cookies = useCookies();
-
 	const { data: session } = useSession();
-	console.log(session);
+
+	useEffect(() => {
+		if (session?.user) {
+			createUser(session?.user as Player);
+		}
+	}, [session]);
 
 	return (
 		<div>
@@ -17,10 +21,20 @@ const AuthPage = () => {
 				{session?.user ? (
 					<div>
 						<span>Profile</span>
-						<button onClick={() => signOut()}>Sign out</button>
+						<button
+							onClick={async () =>
+								await signOut({
+									callbackUrl: "/",
+								})
+							}
+						>
+							Sign out
+						</button>
 					</div>
 				) : (
-					<button onClick={() => signIn()}>Login with google</button>
+					<button onClick={async () => await signIn()}>
+						Login with google
+					</button>
 				)}
 			</div>
 		</div>

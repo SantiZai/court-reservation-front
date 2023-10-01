@@ -22,8 +22,8 @@ export interface Player {
 	email: string;
 	fullname: string;
 	picture: string;
-	admin: boolean;
-	reservations: Reservation[];
+	admin?: boolean;
+	reservations?: Reservation[];
 }
 
 export interface Club {
