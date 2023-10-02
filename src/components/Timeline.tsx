@@ -14,9 +14,11 @@ import {
 const Timeline = ({
 	courts,
 	reservations,
+	clubId,
 }: {
 	courts: Court[];
 	reservations: any;
+	clubId: number;
 }) => {
 	const [actualPage, setActualPage] = useState(0);
 	const [selectedHour, setSelectedHour] = useState<string>("");
@@ -114,14 +116,14 @@ const Timeline = ({
 							return (
 								<div key={i}>
 									<Link
-										href={`/reservations/new-reservation?courtId=${
+										href={`/reservations/new-reservation?clubId=${clubId}&courtId=${
 											actualCourt.id
 										}&hour=${selectedHour}&duration=${60}`}
 									>
 										<div>{actualCourt.name} disponible - 60 minutos</div>
 									</Link>
 									<Link
-										href={`/reservations/new-reservation?courtId=${
+										href={`/reservations/new-reservation?clubId=${clubId}&courtId=${
 											actualCourt.id
 										}&hour=${selectedHour}&duration=${90}`}
 									>
@@ -133,7 +135,7 @@ const Timeline = ({
 							return (
 								<div key={i}>
 									<Link
-										href={`/reservations/new-reservation?courtId=${
+										href={`/reservations/new-reservation?clubId=${clubId}&courtId=${
 											actualCourt.id
 										}&hour=${selectedHour}&duration=${60}`}
 									>

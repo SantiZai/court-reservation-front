@@ -6,12 +6,21 @@ export const API = "http://localhost:3000/";
 
 export const bringUserByEmail = async (email: string) => {
 	try {
-		const res = await axios.get(`${API}players/bring/${email}`);
+		const res = await axios.get(`${API}players/exists?email=${email}`);
 		return res.data;
 	} catch (err) {
 		return err;
 	}
 };
+
+export const bringClub = async (clubName: string) => {
+	try {
+		const res = await axios.get(`${API}clubs?clubName=${clubName}`)
+		return res.data
+	} catch (err) {
+		return err
+	}
+}
 
 export const bringCourts = async (clubName: string) => {
 	try {

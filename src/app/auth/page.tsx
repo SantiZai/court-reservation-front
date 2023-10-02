@@ -4,13 +4,29 @@ import { createUser } from "@/services/createEntries";
 import { Player } from "@/utils/models";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
+import { userStore } from "@/utils/globalStates";
+import { bringUserByEmail } from "@/services/bringData";
 
 const AuthPage = () => {
 	const { data: session } = useSession();
 
+	const setUserState = userStore((state: any) => state.setUser);
+
 	useEffect(() => {
 		if (session?.user) {
-			createUser(session?.user as Player);
+			createUser({
+				email: session.user.email,
+				fullname: session.user.name,
+				picture: session.user.image,
+			} as Player);
+			bringUserByEmail(session.user.email as string).then((res) =>
+				setUserState({
+					id: res.id,
+					email: res.email,
+					name: res.fullName,
+					photo: res.picture,
+				}),
+			);
 		}
 	}, [session]);
 
