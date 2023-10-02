@@ -19,14 +19,15 @@ const AuthPage = () => {
 				fullname: session.user.name,
 				picture: session.user.image,
 			} as Player);
-			bringUserByEmail(session.user.email as string).then((res) =>
+			bringUserByEmail(session.user.email as string).then((res) => {
 				setUserState({
 					id: res.id,
 					email: res.email,
 					name: res.fullName,
 					photo: res.picture,
-				}),
-			);
+				});
+				console.log(res);
+			});
 		}
 	}, [session]);
 

@@ -15,7 +15,6 @@ const HomePage = () => {
 				...data,
 				[field]: e.target.value,
 			});
-			console.log(data);
 		};
 
 	return (
@@ -49,11 +48,15 @@ const HomePage = () => {
 						onChange={handleChange("city")}
 					/>
 				</div>
-				<input type="text" placeholder="Deporte" onChange={handleChange("sport")} />
-				<div className="flex gap-2">
+				<input
+					type="text"
+					placeholder="Deporte"
+					onChange={handleChange("sport")}
+				/>
+				{/* <div className="flex gap-2">
 					<input type="text" placeholder="Día" />
 					<input type="text" placeholder="Horario" />
-				</div>
+				</div> */}
 				<Link
 					href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
 					className="btn-primary text-center rounded-2xl py-1"
