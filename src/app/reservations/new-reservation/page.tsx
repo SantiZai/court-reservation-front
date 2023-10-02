@@ -35,13 +35,11 @@ const NewReservationPage = () => {
 		}
 	};
 
-	//court_id=3&hour=14:00&duration=60
 	useEffect(() => {
 		bringCourt(params.get("courtId")!).then((res) => setCourt(res));
 		setClubId(params.get("clubId")!);
 		setHour(params.get("hour")!);
 		setDuration(parseInt(params.get("duration")!));
-		console.log(user)
 	}, []);
 
 	return (

@@ -4,9 +4,9 @@ import { API } from "./bringData";
 
 export const createUser = async (user: Player) => {
 	const res = await axios.get(`${API}players/exists?email=${user.email}`);
-	if (res.status === 404) {
-		console.log("not found");
+	if (res.data.status === 404) {
 		const res = await axios.post(`${API}players`, user);
+		return res.data;
 	}
 };
 

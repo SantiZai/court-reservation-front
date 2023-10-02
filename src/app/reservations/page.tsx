@@ -1,13 +1,14 @@
 "use client";
 
 import Timeline from "@/components/Timeline";
-import { bringCourts } from "@/services/bringData";
+import { bringClub, bringCourts } from "@/services/bringData";
 import { checkReservations } from "@/services/checking";
 import { Court } from "@/utils/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const ReservationsPage = () => {
+	const [clubId, setClubId] = useState(0);
 	const [courts, setCourts] = useState([] as Court[]);
 	const [reservations, setReservations] = useState({} as {});
 
@@ -16,6 +17,7 @@ const ReservationsPage = () => {
 	useEffect(() => {
 		if (params.get("club")) {
 			bringCourts(params.get("club") as string).then((res) => setCourts(res));
+			bringClub(params.get("club") as string).then((res) => setClubId(res.id));
 		}
 	}, []);
 
@@ -29,7 +31,7 @@ const ReservationsPage = () => {
 		<div>
 			<h2>Reservations</h2>
 			<div>
-				<Timeline courts={courts} reservations={reservations} />
+				<Timeline clubId={clubId} courts={courts} reservations={reservations} />
 			</div>
 		</div>
 	);
