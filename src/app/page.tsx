@@ -18,76 +18,83 @@ const HomePage = () => {
 		};
 
 	return (
-		<div className="container-all p-2">
-			<div>
+		<div className="container-all">
+			<div className="w-full flex justify-end px-4">
 				<span>Logo</span>
 			</div>
 
-			<div className="flex flex-col">
+			<div className="flex flex-col p-4">
 				<span>Reserva tu cancha al instante</span>
-				<span>
+				<span className="[text-wrap:balance]">
 					Selecciná entre las opciones disponibles en tu ciudad en tiempo real!
 				</span>
 			</div>
 
-			<div className="container-search flex flex-col p-2 rounded-2xl">
-				<div>
-					<input
-						type="text"
-						placeholder="País"
-						onChange={handleChange("country")}
-					/>
-					<input
-						type="text"
-						placeholder="Provincia/Estado"
-						onChange={handleChange("province")}
-					/>
-					<input
-						type="text"
-						placeholder="Ciudad"
-						onChange={handleChange("city")}
-					/>
-				</div>
-				<input
-					type="text"
-					placeholder="Deporte"
-					onChange={handleChange("sport")}
-				/>
-				{/* <div className="flex gap-2">
+			<div className="p-4">
+				<div className="container-search flex flex-col p-2 rounded-2xl">
+					<div>
+						<div className="flex px-4 py-2">
+							<input
+								type="text"
+								placeholder="País"
+								onChange={handleChange("country")}
+							/>
+							<input
+								type="text"
+								placeholder="Provincia/Estado"
+								onChange={handleChange("province")}
+							/>
+						</div>
+						<div className="flex px-4 py-2">
+							<input
+								type="text"
+								placeholder="Ciudad"
+								onChange={handleChange("city")}
+							/>
+							<input
+								type="text"
+								placeholder="Deporte"
+								onChange={handleChange("sport")}
+							/>
+						</div>
+					</div>
+					{/* <div className="flex gap-2">
 					<input type="text" placeholder="Día" />
 					<input type="text" placeholder="Horario" />
 				</div> */}
-				<Link
-					href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
-					className="btn-primary text-center rounded-2xl py-1"
-				>
-					Buscar cancha
-				</Link>
+					<Link
+						href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
+						className="btn-primary text-center rounded-2xl py-1 mx-4"
+					>
+						Buscar cancha
+					</Link>
+				</div>
 			</div>
 
-			<div className="test-service">
+			<div className="manage-courts text-center px-4 py-6 font-semibold">
 				<span>Gestioná el uso de tus canchas de forma cómoda y práctica</span>
 			</div>
-			<div>
-				<div className="flex flex-col">
-					<span>
+
+			<div className="test-service px-4 py-6">
+				<div className="flex flex-col px-2 pb-4">
+					<span className="service-question mb-4 text-center">
 						¿Cómo puedo probar el servicio para mi institución deportiva?
 					</span>
-					<span>
+					<span className="points">
 						1. Ver planes y funciones según tus necesidades y las de tus
 						clientes
 					</span>
-					<span>2. Contactarte con nosotros</span>
-					<span>
+					<span className="points">2. Contactarte con nosotros</span>
+					<span className="points">
 						3. Recibes tu prueba <strong>gratis</strong> de hasta 15 días para
 						probar nuestro software
 					</span>
 				</div>
 				<div className="flex w-full justify-between">
-					<button className="btn-primary rounded-md px-3 py-1 text-sm">
+					<button className="btn-primary rounded-md px-4 py-2 text-sm">
 						FUNCIONALIDADES
 					</button>
-					<button className="btn-secondary rounded-md px-3 py-1 text-sm">
+					<button className="btn-secondary rounded-md px-4 py-2 text-sm">
 						PLANES Y PRECIOS
 					</button>
 				</div>
