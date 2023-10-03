@@ -2,16 +2,30 @@
 @import "../variables";
 
 .container-all {
-    background-color: $bg-light;
-}
+	.container-search {
+		box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.30);
+		input {
+			width: 100%;
+			margin: 2px 0px;
+			background-color: $bg-light;
+			outline: none;
+		}
+	}
 
-.container-search {
-	border: 1px solid gray;
-	input {
-		width: 100%;
-		margin: 2px 0px;
-        background-color: $bg-light;
-        outline: none
+	.manage-courts {
+		background-color: $bg-dark;
+		color: $text-light;
+		text-wrap: balance;
+		font-size: 16px;
+	}
+
+	.test-service {
+		.service-question {
+			font-size: 18px;
+		}
+		.points {
+			text-wrap: balance;
+		}
 	}
 }
 

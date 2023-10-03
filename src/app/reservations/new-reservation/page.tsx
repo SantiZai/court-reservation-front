@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Club, Court } from "@/utils/models";
+import { Court } from "@/utils/models";
 import { bringCourt } from "@/services/bringData";
 import { createReservation } from "@/services/createEntries";
 import { userStore } from "@/utils/globalStates";

@@ -1,5 +1,7 @@
 @import "./../variables";
 
 body {
-    background: $bg-light;
+	background: $bg-light;
+	overflow: hidden;
+	touch-action: pan-y;
 }
