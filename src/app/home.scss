@@ -2,8 +2,13 @@
 @import "../variables";
 
 .container-all {
+	.bg-image {
+		background: right / 50% no-repeat url("../../public/bg-1.jpg");
+	}
+
 	.container-search {
-		box-shadow: 0px 2px 11px 0px rgba(0,0,0,0.30);
+		box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.3);
+		background: $bg-light;
 		input {
 			width: 100%;
 			margin: 2px 0px;
