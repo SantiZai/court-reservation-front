@@ -32,12 +32,11 @@ const AuthPage = () => {
 	}, [session]);
 
 	return (
-		<div>
-			<h2>Auth</h2>
+		<div className="flex flex-col items-center">
+			<span className="text-lg text-center">Iniciar sesión</span>
 			<div>
 				{session?.user ? (
 					<div>
-						<span>Profile</span>
 						<button
 							onClick={async () =>
 								await signOut({

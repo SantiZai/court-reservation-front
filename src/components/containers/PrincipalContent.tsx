@@ -16,7 +16,7 @@ const PrincipalContent = ({ children }: { children: React.ReactNode }) => {
 			<div
 				className={`${
 					isOpen && "darken"
-				} h-full w-full flex flex-col justify-between pt-2`}
+				} h-screen w-full flex flex-col justify-between`}
 			>
 				{children}
 				<Footer />

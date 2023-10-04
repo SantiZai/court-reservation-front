@@ -19,55 +19,58 @@ const HomePage = () => {
 
 	return (
 		<div className="container-all">
-			<div className="w-full flex justify-end px-4">
-				<span>Logo</span>
-			</div>
+			<div className="bg-image">
+				<div className="w-full flex justify-end p-4">
+					<span>Logo</span>
+				</div>
 
-			<div className="flex flex-col p-4">
-				<span>Reserva tu cancha al instante</span>
-				<span className="[text-wrap:balance]">
-					Selecciná entre las opciones disponibles en tu ciudad en tiempo real!
-				</span>
-			</div>
+				<div className="flex flex-col p-4">
+					<span>Reserva tu cancha al instante</span>
+					<span className="[text-wrap:balance]">
+						Selecciná entre las opciones disponibles en tu ciudad en tiempo
+						real!
+					</span>
+				</div>
 
-			<div className="p-4">
-				<div className="container-search flex flex-col p-2 rounded-2xl">
-					<div>
-						<div className="flex px-4 py-2">
-							<input
-								type="text"
-								placeholder="País"
-								onChange={handleChange("country")}
-							/>
-							<input
-								type="text"
-								placeholder="Provincia/Estado"
-								onChange={handleChange("province")}
-							/>
+				<div className="p-4">
+					<div className="container-search flex flex-col p-2 rounded-2xl">
+						<div>
+							<div className="flex px-4 py-2">
+								<input
+									type="text"
+									placeholder="País"
+									onChange={handleChange("country")}
+								/>
+								<input
+									type="text"
+									placeholder="Provincia/Estado"
+									onChange={handleChange("province")}
+								/>
+							</div>
+							<div className="flex px-4 py-2">
+								<input
+									type="text"
+									placeholder="Ciudad"
+									onChange={handleChange("city")}
+								/>
+								<input
+									type="text"
+									placeholder="Deporte"
+									onChange={handleChange("sport")}
+								/>
+							</div>
 						</div>
-						<div className="flex px-4 py-2">
-							<input
-								type="text"
-								placeholder="Ciudad"
-								onChange={handleChange("city")}
-							/>
-							<input
-								type="text"
-								placeholder="Deporte"
-								onChange={handleChange("sport")}
-							/>
-						</div>
-					</div>
-					{/* <div className="flex gap-2">
+						{/* <div className="flex gap-2">
 					<input type="text" placeholder="Día" />
 					<input type="text" placeholder="Horario" />
 				</div> */}
-					<Link
-						href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
-						className="btn-primary text-center rounded-2xl py-1 mx-4"
-					>
-						Buscar cancha
-					</Link>
+						<Link
+							href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
+							className="btn-primary text-center rounded-2xl py-1 mx-4"
+						>
+							Buscar cancha
+						</Link>
+					</div>
 				</div>
 			</div>
 
@@ -92,10 +95,10 @@ const HomePage = () => {
 				</div>
 				<div className="flex w-full justify-between">
 					<button className="btn-primary rounded-md px-4 py-2 text-sm">
-						FUNCIONALIDADES
+						Funcionalidades
 					</button>
 					<button className="btn-secondary rounded-md px-4 py-2 text-sm">
-						PLANES Y PRECIOS
+						Planes y precios
 					</button>
 				</div>
 			</div>
