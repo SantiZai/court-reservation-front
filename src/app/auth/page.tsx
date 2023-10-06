@@ -26,7 +26,6 @@ const AuthPage = () => {
 					name: res.fullName,
 					photo: res.picture,
 				});
-				console.log(res);
 			});
 		}
 	}, [session]);

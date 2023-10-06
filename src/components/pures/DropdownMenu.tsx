@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, ArrowBack } from "@mui/icons-material";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 
 const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
@@ -41,17 +41,22 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 							</li>
 							<li className="mb-2">
 								{session?.user ? (
-									<>
+									<div className="flex items-center gap-2">
 										<div>
 											<Image
 												src={session.user.image as string}
 												alt="Profile image"
-												width="20"
-												height="20"
+												width="40"
+												height="40"
 											/>
 										</div>
-										<div></div>
-									</>
+										<div className="flex flex-col">
+											<span>{session.user.name}</span>
+											<span onClick={async () => signOut()} className="text-sm">
+												cerrar sesión
+											</span>
+										</div>
+									</div>
 								) : (
 									<Link href="/auth">Iniciar sesión</Link>
 								)}
