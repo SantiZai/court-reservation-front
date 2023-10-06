@@ -48,11 +48,12 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 												alt="Profile image"
 												width="40"
 												height="40"
+												className="rounded-full"
 											/>
 										</div>
 										<div className="flex flex-col">
 											<span>{session.user.name}</span>
-											<span onClick={async () => signOut()} className="text-sm">
+											<span onClick={async () => signOut()} className="text-sm text-indigo-600 font-semibold">
 												cerrar sesión
 											</span>
 										</div>

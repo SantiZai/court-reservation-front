@@ -8,13 +8,15 @@
 
 .menu {
     background: $bg-light;
-	position: absolute;
+	position: fixed;
 	left: -100%;
 	top: 0;
 	transition: 0.3s ease;
     z-index: 1;
     border-right: 1px solid $primary-color;
     border-radius: 0px 50% 0px 0px;
+    /* Bloquea el scroll en la nav */
+    touch-action: none;
     .separator {
         height: 1px;
         background-color: $primary-color;
