@@ -3,9 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Menu, ArrowBack } from "@mui/icons-material";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 	const [open, setOpen] = useState(false);
+
+	const { data: session } = useSession();
 
 	const toggleMenu = () => {
 		setOpen(!open);
@@ -36,7 +40,21 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 								<Link href="/demo">Quiero una demo</Link>
 							</li>
 							<li className="mb-2">
-								<Link href="/auth">Iniciar sesión</Link>
+								{session?.user ? (
+									<>
+										<div>
+											<Image
+												src={session.user.image as string}
+												alt="Profile image"
+												width="20"
+												height="20"
+											/>
+										</div>
+										<div></div>
+									</>
+								) : (
+									<Link href="/auth">Iniciar sesión</Link>
+								)}
 							</li>
 							<div className="separator w-3/4"></div>
 							<li className="w-3/4 mt-4 text-sm text-center">
