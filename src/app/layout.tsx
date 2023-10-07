@@ -1,7 +1,5 @@
 import "./globals.css";
 import "./layout.scss";
-import { cookies } from "next/headers";
-import ClientCookiesProvider from "@/components/providers/CookiesProvider";
 import Provider from "@/components/providers/SessionProvider";
 import PrincipalContent from "@/components/containers/PrincipalContent";
 
@@ -18,9 +16,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<Provider>
-					<ClientCookiesProvider value={cookies().getAll()}>
-						<PrincipalContent children={children} />
-					</ClientCookiesProvider>
+					<PrincipalContent children={children} />
 				</Provider>
 			</body>
 		</html>

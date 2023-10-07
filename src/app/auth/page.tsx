@@ -6,6 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { userStore } from "@/utils/globalStates";
 import { bringUserByEmail } from "@/services/bringData";
+import { useRouter } from "next/navigation";
 
 const AuthPage = () => {
 	const { data: session } = useSession();
