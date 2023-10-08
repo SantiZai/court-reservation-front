@@ -6,11 +6,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { userStore } from "@/utils/globalStates";
 import { bringUserByEmail } from "@/services/bringData";
-import { useRouter } from "next/navigation";
 
 const AuthPage = () => {
-	const router = useRouter();
-
 	const { data: session } = useSession();
 
 	const setUserState = userStore((state: any) => state.setUser);
