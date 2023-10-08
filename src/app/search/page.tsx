@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { findCourts } from "@/services/searchCourts";
 import { Club, Sport } from "@/utils/models";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import "./searchPage.scss";
 
 const SearchPage = () => {
 	const [country, setCountry] = useState("");
@@ -31,16 +32,18 @@ const SearchPage = () => {
 	}, [country, province, city, sport]);
 
 	return (
-		<div>
-			<span>Search page</span>
+		<div className="pt-10">
+			<span className="px-4 text-lg">Clubes disponibles en {city}.</span>
 			{clubs && (
-				<div>
+				<div className="px-4 mt-4">
 					{clubs.map((club: Club) => {
 						return (
-							<div key={club.id}>
+							<div key={club.id} className="card-club">
 								<Link href={`reservations?club=${club.name}`}>
-									<span>{club.name}</span>
-									<div className="flex">
+									<div className="bg-image flex items-end font-semibold" style={{ backgroundImage: `url(${club.image})`}}>
+										<span className="p-2 text-lg">{club.name}</span>
+									</div>
+									<div className="flex p-2 font-bold text-sm">
 										{club.sports.map((sport: Sport, i: number) => {
 											return <span key={i}>{sport}</span>;
 										})}

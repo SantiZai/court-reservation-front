@@ -31,13 +31,19 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 					<div className="h-full w-2/3 flex flex-col justify-between">
 						<div className="flex flex-col gap-1">
 							<li>
-								<Link href="/">Inicio</Link>
+								<Link href="/" onClick={toggleMenu}>
+									Inicio
+								</Link>
 							</li>
 							<li>
-								<Link href="/contact">Contactanos</Link>
+								<Link href="/contact" onClick={toggleMenu}>
+									Contactanos
+								</Link>
 							</li>
 							<li>
-								<Link href="/demo">Quiero una demo</Link>
+								<Link href="/demo" onClick={toggleMenu}>
+									Quiero una demo
+								</Link>
 							</li>
 							<li className="mb-2">
 								{session?.user ? (
@@ -53,13 +59,18 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 										</div>
 										<div className="flex flex-col">
 											<span>{session.user.name}</span>
-											<span onClick={async () => signOut()} className="text-sm text-indigo-600 font-semibold">
+											<span
+												onClick={async () => signOut()}
+												className="text-sm text-indigo-600 font-semibold"
+											>
 												cerrar sesión
 											</span>
 										</div>
 									</div>
 								) : (
-									<Link href="/auth">Iniciar sesión</Link>
+									<Link href="/auth" onClick={toggleMenu}>
+										Iniciar sesión
+									</Link>
 								)}
 							</li>
 							<div className="separator w-3/4"></div>
