@@ -9,6 +9,8 @@ import { bringUserByEmail } from "@/services/bringData";
 import { useRouter } from "next/navigation";
 
 const AuthPage = () => {
+	const router = useRouter();
+
 	const { data: session } = useSession();
 
 	const setUserState = userStore((state: any) => state.setUser);
@@ -48,7 +50,9 @@ const AuthPage = () => {
 						</button>
 					</div>
 				) : (
-					<button onClick={async () => await signIn()}>
+					<button
+						onClick={async () => await signIn("google", { callbackUrl: "/" })}
+					>
 						Login with google
 					</button>
 				)}
