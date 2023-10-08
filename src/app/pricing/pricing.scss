@@ -1,0 +1,12 @@
+@import "../../mixins";
+@import "../../variables";
+
+.btn-secondary {
+    @include btn;
+    width: fit-content;
+}
+
+.btn-primary {
+    @include btn(true);
+    width: fit-content;
+}

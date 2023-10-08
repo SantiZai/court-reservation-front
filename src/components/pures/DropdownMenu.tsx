@@ -41,6 +41,11 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 								</Link>
 							</li>
 							<li>
+								<Link href="/pricing" onClick={toggleMenu}>
+									Servicios y precios
+								</Link>
+							</li>
+							<li>
 								<Link href="/demo" onClick={toggleMenu}>
 									Quiero una demo
 								</Link>

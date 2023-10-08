@@ -66,7 +66,7 @@ const HomePage = () => {
 				</div> */}
 						<Link
 							href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
-							className="btn-primary text-center rounded-2xl py-1 mx-4"
+							className="btn-primary w-full text-center rounded-2xl py-1"
 						>
 							Buscar cancha
 						</Link>
