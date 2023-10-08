@@ -3,6 +3,14 @@ enum STATE {
 	Ocupado,
 }
 
+enum SURFACE {
+	PolvoDeLadrillo,
+	Cemento,
+	Cesped,
+	CespedSintetico,
+	Parquet,
+}
+
 export enum Sport {
 	Tenis,
 	Basquet,
@@ -40,6 +48,7 @@ export interface Court {
 	club: Club;
 	clubId: number;
 	sport: Sport;
+	surface: SURFACE;
 	reservations: Reservation[];
 }
 

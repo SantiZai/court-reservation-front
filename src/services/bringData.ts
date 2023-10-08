@@ -15,12 +15,21 @@ export const bringUserByEmail = async (email: string) => {
 
 export const bringClub = async (clubName: string) => {
 	try {
-		const res = await axios.get(`${API}clubs?clubName=${clubName}`)
-		return res.data
+		const res = await axios.get(`${API}clubs?clubName=${clubName}`);
+		return res.data;
 	} catch (err) {
-		return err
+		return err;
 	}
-}
+};
+
+export const bringClubById = async (id: string) => {
+	try {
+		const res = await axios.get(`${API}clubs/${id}`);
+		return res.data;
+	} catch (err) {
+		return err;
+	}
+};
 
 export const bringCourts = async (clubName: string) => {
 	try {
