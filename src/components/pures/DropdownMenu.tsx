@@ -78,6 +78,9 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 									</Link>
 								)}
 							</li>
+							<li>
+								<Link href="/club">Club</Link>
+							</li>
 							<div className="separator w-3/4"></div>
 							<li className="w-3/4 mt-4 text-sm text-center">
 								<Link href="/privacy-policy">Términos y condiciones</Link>

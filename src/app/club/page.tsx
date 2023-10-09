@@ -4,6 +4,7 @@ import "./club.scss";
 import { bringClubById, bringUserByEmail } from "@/services/bringData";
 import { Club, Court, Player } from "@/utils/models";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const ClubPage = () => {
@@ -33,6 +34,7 @@ const ClubPage = () => {
 							club.courts.map((court: Court) => {
 								return (
 									<div key={court.id} className="court flex flex-col p-2 rounded-md">
+										<Link href={`/club/court/${court.id}`}>
 										<span className="text-lg">{court.name}</span>
 										<div>
 											<span className="text-sm">{court.surface}</span>
@@ -45,6 +47,7 @@ const ClubPage = () => {
 													: "Sin iluminación"}
 											</span>
 										</div>
+										</Link>
 									</div>
 								);
 							})}
