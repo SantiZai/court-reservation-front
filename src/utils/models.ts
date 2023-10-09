@@ -3,7 +3,7 @@ enum STATE {
 	Ocupado,
 }
 
-enum SURFACE {
+export enum SURFACE {
 	PolvoDeLadrillo,
 	Cemento,
 	Cesped,

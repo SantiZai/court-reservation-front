@@ -60,10 +60,6 @@ const HomePage = () => {
 								/>
 							</div>
 						</div>
-						{/* <div className="flex gap-2">
-					<input type="text" placeholder="Día" />
-					<input type="text" placeholder="Horario" />
-				</div> */}
 						<Link
 							href={`search?country=${data.country}&province=${data.province}&city=${data.city}&sport=${data.sport}`}
 							className="btn-primary w-full text-center rounded-2xl py-1"
