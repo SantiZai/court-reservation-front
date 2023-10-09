@@ -18,6 +18,7 @@ import {
 import { bringCourt } from "@/services/bringData";
 import { Court, SURFACE } from "@/utils/models";
 import { updateCourt } from "@/services/updateEntries";
+import Link from "next/link";
 
 const CourtClubPage = () => {
 	/* TODO: Puedo juntar todos los estados en uno tipo objeto y ahi ir actualizando */
@@ -68,6 +69,7 @@ const CourtClubPage = () => {
 						value={surface}
 						variant="standard"
 					>
+						<MenuItem value={0}>Seleccioná una opción</MenuItem>
 						<MenuItem value={"PolvoDeLadrillo"}>Polvo de ladrillo</MenuItem>
 						<MenuItem value={"Cemento"}>Cemento</MenuItem>
 						<MenuItem value={"Cesped"}>Césped</MenuItem>
@@ -95,14 +97,17 @@ const CourtClubPage = () => {
 						/>
 					</RadioGroup>
 				</div>
+                <div className="w-full flex flex-col justify-center items-center gap-2">
 				<button
-					className="btn-primary w-1/2 text-center rounded-lg py-1"
+					className="btn-primary w-3/4 text-center rounded-lg py-1"
 					onClick={() =>
 						updateCourt(court.id.toString(), { name, surface, illuminated })
 					}
 				>
-					Actualizar
+					Actualizar cancha
 				</button>
+                <Link href="/club" className="btn-secondary w-3/4 text-center rounded-lg py-1">Volver atrás</Link>
+                </div>
 			</FormControl>
 		</div>
 	);

@@ -1,13 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, ArrowBack } from "@mui/icons-material";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { bringUserByEmail } from "@/services/bringData";
+import { Player } from "@/utils/models";
 
 const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 	const [open, setOpen] = useState(false);
+	const [user, setUser] = useState({} as Player);
 
 	const { data: session } = useSession();
 
@@ -15,6 +18,14 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 		setOpen(!open);
 		handler(!open);
 	};
+
+	useEffect(() => {
+		if (session?.user) {
+			bringUserByEmail(session.user.email as string).then((res) =>
+				setUser(res),
+			);
+		}
+	}, [session]);
 
 	return (
 		<div>
@@ -78,9 +89,13 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 									</Link>
 								)}
 							</li>
-							<li>
-								<Link href="/club">Club</Link>
-							</li>
+							{user.admin && (
+								<li>
+									<Link href="/club" onClick={toggleMenu}>
+										Club
+									</Link>
+								</li>
+							)}
 							<div className="separator w-3/4"></div>
 							<li className="w-3/4 mt-4 text-sm text-center">
 								<Link href="/privacy-policy">Términos y condiciones</Link>
