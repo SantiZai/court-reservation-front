@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API } from "./bringData";
 
 export const findCourts = async ({
 	country,
@@ -13,7 +12,7 @@ export const findCourts = async ({
 	sport: string;
 }) => {
 	const res = await axios.get(
-		`${API}clubs/search/results?country=${country}&province=${province}&city=${city}&sport=${sport}`,
+		`https://hobart-cassowary-mzbn.2.us-1.fl0.io/clubs/search/results?country=${country}&province=${province}&city=${city}&sport=${sport}`,
 	);
 	if (!res) return console.log("Courts not founded");
 	return res.data;

@@ -1,12 +1,8 @@
 import axios from "axios";
 
-//TODO: Solucionar problema con la variable de entorno
-//const API = process.env.API_BASE;
-export const API = "http://localhost:3000/";
-
 export const bringUserByEmail = async (email: string) => {
 	try {
-		const res = await axios.get(`${API}players/exists?email=${email}`);
+		const res = await axios.get(`https://hobart-cassowary-mzbn.2.us-1.fl0.io/players/exists?email=${email}`);
 		return res.data;
 	} catch (err) {
 		return err;
@@ -15,7 +11,7 @@ export const bringUserByEmail = async (email: string) => {
 
 export const bringClub = async (clubName: string) => {
 	try {
-		const res = await axios.get(`${API}clubs?clubName=${clubName}`);
+		const res = await axios.get(`https://hobart-cassowary-mzbn.2.us-1.fl0.io/clubs?clubName=${clubName}`);
 		return res.data;
 	} catch (err) {
 		return err;
@@ -24,7 +20,7 @@ export const bringClub = async (clubName: string) => {
 
 export const bringClubById = async (id: string) => {
 	try {
-		const res = await axios.get(`${API}clubs/${id}`);
+		const res = await axios.get(`https://hobart-cassowary-mzbn.2.us-1.fl0.io/clubs/${id}`);
 		return res.data;
 	} catch (err) {
 		return err;
@@ -33,7 +29,7 @@ export const bringClubById = async (id: string) => {
 
 export const bringCourts = async (clubName: string) => {
 	try {
-		const res = await axios.get(`${API}courts?club=${clubName}`);
+		const res = await axios.get(`https://hobart-cassowary-mzbn.2.us-1.fl0.io/courts?club=${clubName}`);
 		return res.data;
 	} catch (err) {
 		return err;
@@ -42,7 +38,7 @@ export const bringCourts = async (clubName: string) => {
 
 export const bringCourt = async (id: string) => {
 	try {
-		const res = await axios.get(`${API}courts/${id}`);
+		const res = await axios.get(`https://hobart-cassowary-mzbn.2.us-1.fl0.io/courts/${id}`);
 		return res.data;
 	} catch (err) {
 		return err;

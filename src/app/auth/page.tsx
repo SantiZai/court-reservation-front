@@ -48,7 +48,7 @@ const AuthPage = () => {
 					</div>
 				) : (
 					<button
-						onClick={async () => await signIn("google", { callbackUrl: "/" })}
+						onClick={async () => await signIn("google")}
 					>
 						Login with google
 					</button>
