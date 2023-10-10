@@ -85,7 +85,7 @@ const HomePage = () => {
 					</span>
 					<span className="points">2. Contactarte con nosotros</span>
 					<span className="points">
-						3. Recibes tu prueba <strong>gratis</strong> de hasta 15 días para
+						3. Recibes tu prueba <strong>gratis</strong> de hasta 30 días para
 						probar nuestro software
 					</span>
 				</div>

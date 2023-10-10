@@ -1,5 +1,5 @@
-import Link from "next/link";
 import "./pricing.scss";
+import Link from "next/link";
 
 const PricingPage = () => {
 	return (
@@ -61,7 +61,7 @@ const PricingPage = () => {
 						<span>Sistema de control <strong>all time</strong> de cada reserva efectuada.</span>
 					</div>
 					<div>
-						<span>Prueba grauita</span>
+						<Link href="/join">Prueba grauita</Link>
 					</div>
 				</div>
 			</div>

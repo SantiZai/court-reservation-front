@@ -5,7 +5,7 @@ import { findCourts } from "@/services/searchCourts";
 import { Club, Sport } from "@/utils/models";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import "./searchPage.scss";
+import "./search.scss";
 
 const SearchPage = () => {
 	const [country, setCountry] = useState("");
