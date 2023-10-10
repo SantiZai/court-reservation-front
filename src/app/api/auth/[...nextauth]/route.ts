@@ -10,4 +10,6 @@ const handler = NextAuth({
 	],
 });
 
+console.log("paso")
+
 export { handler as GET, handler as POST };
