@@ -84,7 +84,7 @@ const DropdownMenu = ({ handler }: { handler: (isOpen: boolean) => void }) => {
 										</div>
 									</div>
 								) : (
-									<Link href="/auth" onClick={toggleMenu}>
+									<Link href="/login" onClick={toggleMenu}>
 										Iniciar sesión
 									</Link>
 								)}
